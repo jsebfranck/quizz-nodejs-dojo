@@ -1,0 +1,22 @@
+{
+  "name": "beers-nodejs-dojo",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "jsebfranck <jsebfranck@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/jsebfranck/beers-nodejs-dojo",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.6"
+  }
+}
