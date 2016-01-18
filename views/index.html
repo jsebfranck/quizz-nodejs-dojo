@@ -13,12 +13,10 @@
                     <h3 class="panel-title">Vous</h3>
                 </div>
                 <div class="panel-body">
-                    <form>
-                        <fieldset class="form-group">
-                            <label for="login">Login</label>
-                            <input type="text" class="form-control" id="login" placeholder="Votre login" data-ng-bind="login">
-                        </fieldset>
-                    </form>
+                    <fieldset class="form-group">
+                        <label for="login">Login</label>
+                        <input type="text" class="form-control" id="login" placeholder="Votre login" data-ng-model="login">
+                    </fieldset>
                 </div>
             </div>
         </div>
@@ -40,7 +38,7 @@
                 <div class="panel-body">
                     <p>
                         <button type="button" class="btn btn-lg btn-default"
-                                data-ng-repeat="city in question.cities"
+                                data-ng-repeat="city in question.cities track by $index"
                                 data-ng-bind="city"
                                 data-ng-click="answer(city)"></button>
                     </p>
@@ -57,30 +55,16 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
-                    <th>#</th>
                     <th>Login</th>
                     <th>Questions</th>
                     <th>Réponses avec succès</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
+                <tr data-ng-repeat="(login, scoreEntry) in score">
+                    <td data-ng-bind="login"></td>
+                    <td data-ng-bind="scoreEntry.questions"></td>
+                    <td data-ng-bind="scoreEntry.answers"></td>
                 </tr>
                 </tbody>
             </table>

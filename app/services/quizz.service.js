@@ -22,7 +22,10 @@ exports.answerQuestion = function(answer) {
         score[answer.getLogin()].answers++;
     }
 
-    return score;
+    return {
+        score: score,
+        isCorrect: isCorrect
+    };
 };
 
 exports.getCapitals = function() {
