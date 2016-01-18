@@ -1,50 +1,39 @@
 'use strict';
 
-var capitals = require('./capitals.service');
-var score = {};
+var capitalsService = require('./capitals.service'),
+    scoreService = require('./score.service');
 
-exports.answerQuestion = function(answer) {
-    var expectedCapital = capitals.getCapitalByCountry(answer.getCountry());
+exports.answerQuestion = function(answer, cb) {
+    capitalsService.getCapitalByCountry(answer.getCountry(), function(err, expectedCapital) {
+        var isCorrect = !err && answer.getUserChoice() === expectedCapital.city;
 
-    var isCorrect = answer.getUserChoice() === expectedCapital.city;
-
-    if (!score[answer.getLogin()]) {
-      score[answer.getLogin()] = {
-          questions: 0,
-          answers: 0
-      };
-    };
-
-    score[answer.getLogin()].questions++;
-
-    if (isCorrect) {
-        score[answer.getLogin()].answers++;
-    }
-
-    return {
-        score: score,
-        isCorrect: isCorrect
-    };
+        scoreService.newAnswer(answer.getLogin(), isCorrect, function(err, score) {
+            cb(null, {
+                score: score,
+                isCorrect: isCorrect
+            });
+        });
+    });
 };
 
-exports.getCapitals = function() {
-    return capitals.getCapitals();
+exports.getCapitals = function(cb) {
+    cb(null, capitalsService.getCapitals());
 };
 
-exports.newQuestion = function () {
+exports.newQuestion = function (cb) {
 
-    var capital1 = capitals.getRandomCapital();
-    var capital2 = capitals.getRandomCapital();
-    var capital3 = capitals.getRandomCapital();
-    var capital4 = capitals.getRandomCapital();
+    capitalsService.getRandomCapitals(function(err, capitals) {
+        shuffle(capitals);
 
-    var choices = [capital1.city, capital2.city, capital3.city, capital4.city];
-    shuffle(choices);
+        var cities = capitals.map(function(capital) {
+            return capital.city;
+        });
 
-    return {
-        country: capital1.country,
-        cities: choices
-    };
+        cb(null, {
+            country: capitals[0].country,
+            cities: cities
+        });
+    });
 };
 
 var shuffle = function(array) {

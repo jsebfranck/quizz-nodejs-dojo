@@ -19,23 +19,29 @@ module.exports = function(app, io) {
     // API
 
     app.get('/api/questions', function(req, res) {
-        res.json(quizz.getCapitals());
+
+        quizz.getCapitals(function(err, capitals) {
+            res.json(capitals);
+        });
     });
 
     app.get('/api/quizz/next', function(req, res) {
-        res.json(quizz.newQuestion());
+
+        quizz.newQuestion(function(err, question) {
+            res.json(question);
+        });
     });
 
     app.post('/api/quizz/answer', function(req, res) {
         var answer = new Answer(req.body.login, req.body.country, req.body.userChoice);
 
-        var score = quizz.answerQuestion(answer);
+        quizz.answerQuestion(answer, function(err, result) {
+            io.emit('new_answer', {
+                login: req.body.login,
+                isCorrect: result.isCorrect
+            });
 
-        io.emit('new_answer', {
-            login: req.body.login,
-            isCorrect: score.isCorrect
+            res.json(result);
         });
-
-        res.json(score);
     });
 };

@@ -1,9 +1,9 @@
 
 var chai = require('chai');
 var assert = chai.assert;
-var capitals = require('../app/services/capitals');
+var capitals = require('../app/services/capitalsService');
 
-describe('capitals', function() {
+describe('capitalsService', function() {
 
     describe('getCapitalByCountry', function() {
         it('should return good capital', function() {

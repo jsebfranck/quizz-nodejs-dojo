@@ -236,11 +236,11 @@ var capitals = [{
  Zagreb	Drapeau de la Croatie Croatie
  * */
 
-exports.getCapitals = function() {
-    return capitals;
+exports.getCapitals = function(cb) {
+    cb(null, capitals);
 };
 
-exports.getCapitalByCountry = function(country) {
+exports.getCapitalByCountry = function(country, cb) {
     var foundCapital;
 
     capitals.forEach(function(capital) {
@@ -251,13 +251,25 @@ exports.getCapitalByCountry = function(country) {
     });
 
     if (foundCapital) {
-        return foundCapital;
+        cb(null, foundCapital);
     }
-    throw new Error('Unknown country');
+
+    var error = new Error('Unknown country : ' + country);
+
+    console.error(error);
+    cb(error);
 };
 
-exports.getRandomCapital = function() {
-    var randomCapitalNumber = Math.floor((Math.random() * capitals.length));
+exports.getRandomCapitals = function(cb) {
 
-    return capitals[randomCapitalNumber];
+    var randomCapitals = [];
+
+    for (var i = 0 ; i < 4 ; i++) {
+        var randomCapitalNumber = Math.floor((Math.random() * capitals.length));
+
+        var randomCapital = capitals[randomCapitalNumber];
+        randomCapitals.push(randomCapital);
+    }
+
+    cb(null, randomCapitals);
 };
