@@ -1,4 +1,4 @@
-{% extends 'layout.html' %}
+{% extends 'layout/layout.html' %}
 
 {% block content %}
     <div class="jumbotron">
@@ -6,25 +6,43 @@
         <p>Devenez un expert des capitales du monde !</p>
     </div>
 
-    <div class="alert alert-success" role="alert">
+    <div class="row">
+        <div class="col-sm-16">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Vous</h3>
+                </div>
+                <div class="panel-body">
+                    <form>
+                        <fieldset class="form-group">
+                            <label for="login">Login</label>
+                            <input type="text" class="form-control" id="login" placeholder="Votre login" data-ng-bind="login">
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="alert alert-success" role="alert" data-ng-show="showSuccessMessage">
         Bien joué!
     </div>
-    <div class="alert alert-danger" role="alert">
+    <div class="alert alert-danger" role="alert" data-ng-show="showFailedMessage">
         <strong>Mauvaise réponse</strong>, <a href="/revisions">il faut réviser encore !</a>
     </div>
 
     <div class="row">
         <div class="col-sm-16">
-            <div class="panel panel-info">
+            <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Quelle est la capitale de la France ?</h3>
+                    <h3 class="panel-title">Quelle est la capitale de <span data-ng-bind="question.country"></span> ?</h3>
                 </div>
                 <div class="panel-body">
                     <p>
-                        <button type="button" class="btn btn-lg btn-default">Paris</button>
-                        <button type="button" class="btn btn-lg btn-default">Berlin</button>
-                        <button type="button" class="btn btn-lg btn-default">Madrid</button>
-                        <button type="button" class="btn btn-lg btn-default">Londres</button>
+                        <button type="button" class="btn btn-lg btn-default"
+                                data-ng-repeat="city in question.cities"
+                                data-ng-bind="city"
+                                data-ng-click="answer(city)"></button>
                     </p>
                 </div>
             </div>

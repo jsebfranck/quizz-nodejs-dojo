@@ -1,5 +1,5 @@
 var Answer = require('../objects/Answer'),
-    quizz = require('../services/quizz');
+    quizz = require('../services/quizz.service');
 
 module.exports = function(app) {
     // Vues
