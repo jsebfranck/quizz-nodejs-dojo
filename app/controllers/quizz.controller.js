@@ -36,10 +36,10 @@ module.exports = function(app, io) {
         var answer = new Answer(req.body.login, req.body.country, req.body.userChoice);
 
         quizz.answerQuestion(answer, function(err, result) {
-            io.emit('new_answer', {
+            /*io.emit('new_answer', {
                 login: req.body.login,
                 isCorrect: result.isCorrect
-            });
+            });*/
 
             res.json(result);
         });
