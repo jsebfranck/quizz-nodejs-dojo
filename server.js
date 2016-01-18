@@ -19,7 +19,6 @@ app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
 app.set('views', __dirname + '/views');
 
-quizzController(app);
 
 var server = app.listen(3001, function() {
     console.log('App started');
@@ -27,13 +26,4 @@ var server = app.listen(3001, function() {
 
 var io = socketIO.listen(server);
 
-
-io.on('connection', function(socket) {
-
-    console.log('new connection');
-
-    socket.emit('news', { hello: 'world' });
-    socket.on('my other event', function (data) {
-        console.log(data);
-    });
-});
+quizzController(app, io);

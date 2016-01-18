@@ -1,7 +1,7 @@
 var Answer = require('../objects/Answer'),
     quizz = require('../services/quizz.service');
 
-module.exports = function(app) {
+module.exports = function(app, io) {
     // Vues
 
     app.get('/', function(req, res) {
@@ -30,6 +30,12 @@ module.exports = function(app) {
         var answer = new Answer(req.body.login, req.body.country, req.body.userChoice);
 
         var score = quizz.answerQuestion(answer);
+
+        io.emit('new_answer', {
+            login: req.body.login,
+            isCorrect: score.isCorrect
+        });
+
         res.json(score);
     });
 };
