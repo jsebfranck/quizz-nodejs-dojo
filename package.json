@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/jsebfranck/beers-nodejs-dojo#readme",
   "dependencies": {
+    "body-parser": "^1.14.2",
+    "chai": "^3.4.1",
     "express": "^4.13.3",
     "lodash": "^4.0.0",
     "q": "^1.4.1",
