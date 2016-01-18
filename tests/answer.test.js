@@ -2,7 +2,7 @@
 
 var chai = require('chai');
 var assert = chai.assert;
-var Answer = require('../app/Answer');
+var Answer = require('../app/objects/Answer');
 
 describe('Answer', function() {
 

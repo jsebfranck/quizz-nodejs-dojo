@@ -1,7 +1,7 @@
 
 var chai = require('chai');
 var assert = chai.assert;
-var quizz = require('../app/quizz');
+var quizz = require('../app/services/quizz');
 
 describe('quizz', function() {
 

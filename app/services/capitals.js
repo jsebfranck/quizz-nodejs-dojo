@@ -248,5 +248,7 @@ exports.getCapitalByCountry = function(country) {
 };
 
 exports.getRandomCapital = function() {
-    return capitals[0];
+    var randomCapitalNumber = Math.floor((Math.random() * capitals.length));
+
+    return capitals[randomCapitalNumber];
 };

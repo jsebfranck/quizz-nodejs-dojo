@@ -1,7 +1,7 @@
 
 var chai = require('chai');
 var assert = chai.assert;
-var capitals = require('../app/capitals');
+var capitals = require('../app/services/capitals');
 
 describe('capitals', function() {
 
