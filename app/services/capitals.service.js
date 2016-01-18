@@ -2,32 +2,42 @@
 
 var capitals = [{
     country: 'Slovénie',
-    city: 'Ljubjana',
-    continent: 'Europe'
+    city: 'Ljubljana'
 }, {
     country: 'France',
-    city: 'Paris',
-    continent: 'Europe'
+    city: 'Paris'
+}, {
+    country: 'Jordanie',
+    city: 'Amman'
 }, {
     country: 'Allemagne',
-    city: 'Berlin',
-    continent: 'Europe'
-}];
+    city: 'Berlin'
+}, {
+    country: 'Nigeria',
+    city: 'Abuja'
+}, {
+    country: 'Ghana',
+    city: 'Accra'
+}, {
+    country: 'Pays-Bas',
+    city: 'Amsterdam'
+}, {
+    country: 'Samoa',
+    city: 'Aspia'
+}, {
+    country: 'Venezuela',
+    city: 'Caracas'
+} ];
 
 /*
  Abou Dabi	Drapeau des Émirats arabes unis Émirats arabes unis
- Abuja	Drapeau du Nigeria Nigeria
- Accra	Drapeau du Ghana Ghana
  Achgabat	Drapeau du Turkménistan Turkménistan
  Addis-Abeba	Drapeau de l'Éthiopie Éthiopie
  Alger	Drapeau de l'Algérie Algérie
  Alofi	Drapeau de Niue Niue
- Amman	Drapeau de la Jordanie Jordanie
- Amsterdam (capitale constitutionnelle)3	Drapeau des Pays-Bas Pays-Bas
  Andorre-la-Vieille	Drapeau d'Andorre Andorre
  Ankara	Drapeau de la Turquie Turquie
  Antananarivo	Drapeau de Madagascar Madagascar
- Apia	Drapeau des Samoa Samoa
  Asmara	Drapeau de l'Érythrée Érythrée
  Astana4	Drapeau du Kazakhstan Kazakhstan
  Asuncion	Drapeau du Paraguay Paraguay
@@ -63,7 +73,6 @@ var capitals = [{
  Le Caire	Drapeau de l'Égypte Égypte
  Canberra	Drapeau de l'Australie Australie
  Le Cap (capitale législative)6	Drapeau de l'Afrique du Sud Afrique du Sud
- Caracas	Drapeau du Venezuela Venezuela
  Castries	Drapeau de Sainte-Lucie Sainte-Lucie
  Chisinau	Drapeau de la Moldavie Moldavie
  Sri Jayawardenapura (administrative et législative)7	Drapeau du Sri Lanka Sri Lanka

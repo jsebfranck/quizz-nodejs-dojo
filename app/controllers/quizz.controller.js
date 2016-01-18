@@ -29,7 +29,6 @@ module.exports = function(app) {
     app.post('/api/quizz/answer', function(req, res) {
         var answer = new Answer(req.body.login, req.body.country, req.body.userChoice);
 
-        console.log(answer);
         var score = quizz.answerQuestion(answer);
         res.json(score);
     });
