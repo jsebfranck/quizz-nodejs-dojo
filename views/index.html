@@ -1,0 +1,73 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="jumbotron">
+        <h1>Quizz des capitales</h1>
+        <p>Devenez un expert des capitales du monde !</p>
+    </div>
+
+    <div class="alert alert-success" role="alert">
+        Bien joué!
+    </div>
+    <div class="alert alert-danger" role="alert">
+        <strong>Mauvaise réponse</strong>, <a href="/revisions">il faut réviser encore !</a>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-16">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Quelle est la capitale de la France ?</h3>
+                </div>
+                <div class="panel-body">
+                    <p>
+                        <button type="button" class="btn btn-lg btn-default">Paris</button>
+                        <button type="button" class="btn btn-lg btn-default">Berlin</button>
+                        <button type="button" class="btn btn-lg btn-default">Madrid</button>
+                        <button type="button" class="btn btn-lg btn-default">Londres</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h1>Scores</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Login</th>
+                    <th>Questions</th>
+                    <th>Réponses avec succès</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Larry</td>
+                    <td>the Bird</td>
+                    <td>@twitter</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+
+

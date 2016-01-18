@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="jumbotron">
+    <h1>Un peu de révision</h1>
+    <p>Avant de jouer, révisez vos classiques !</p>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Continent</th>
+                <th>Pays</th>
+                <th>Ville</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for capital in capitals %}
+                    <tr>
+                        <td>{{ capital.continent }}</td>
+                        <td>{{ capital.country }}</td>
+                        <td>{{ capital.city }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
