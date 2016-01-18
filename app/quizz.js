@@ -6,23 +6,23 @@ var score = {};
 
 exports.answerQuestion = function(answer) {
 
-    var expectedCapital = capitals.getCapitalByCountry(answer.country);
+    var expectedCapital = capitals.getCapitalByCountry(answer.getCountry());
 
     console.log('Expected', expectedCapital);
 
-    var isCorrect = answer.userChoice === expectedCapital.city;
+    var isCorrect = answer.getUserChoice() === expectedCapital.city;
 
-    if (!score[answer.login]) {
-      score[answer.login] = {
+    if (!score[answer.getLogin()]) {
+      score[answer.getLogin()] = {
           questions: 0,
           answers: 0
       };
     };
 
-    score[answer.login].questions++;
+    score[answer.getLogin()].questions++;
 
     if (isCorrect) {
-        score[answer.login].answers++;
+        score[answer.getLogin()].answers++;
     }
 
     return score;

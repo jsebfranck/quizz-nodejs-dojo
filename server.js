@@ -2,7 +2,8 @@
 
 var express = require('express'),
     swig = require('swig'),
-    bodyParser = require('body-parser');
+    bodyParser = require('body-parser'),
+    Answer = require('./app/Answer');
 
 var quizz = require('./app/quizz');
 
@@ -44,15 +45,9 @@ app.get('/api/quizz/next', function(req, res) {
 });
 
 app.post('/api/quizz/answer', function(req, res) {
-    var answer = {
-        login: req.body.login,
-        country: req.body.country,
-        userChoice: req.body.userChoice
-    };
+    var answer = new Answer(req.body.login, req.body.country, req.body.userChoice);
 
     console.log(answer);
-    console.log(req.body);
-
     var score = quizz.answerQuestion(answer);
     res.json(score);
 });
