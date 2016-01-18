@@ -32,5 +32,4 @@ module.exports = function(app) {
         var score = quizz.answerQuestion(answer);
         res.json(score);
     });
-
 };

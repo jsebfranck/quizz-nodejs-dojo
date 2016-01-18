@@ -1,7 +1,6 @@
 'use strict';
 
 var capitals = require('./capitals.service');
-
 var score = {};
 
 exports.answerQuestion = function(answer) {
@@ -49,11 +48,10 @@ exports.newQuestion = function () {
 };
 
 var shuffle = function(array) {
-    var i = 0
-        , j = 0
-        , temp = null;
+    var j = 0;
+    var temp = null;
 
-    for (i = array.length - 1; i > 0; i -= 1) {
+    for (var i = array.length - 1; i > 0; i -= 1) {
         j = Math.floor(Math.random() * (i + 1));
         temp = array[i];
         array[i] = array[j];
