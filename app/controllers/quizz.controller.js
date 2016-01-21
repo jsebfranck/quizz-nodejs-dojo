@@ -25,9 +25,9 @@ module.exports = function(app, io) {
     // API
 
     app.get('/api/scores', function(req, res) {
-        quizz.getAllScores(function(err, allScores) {
+        quizz.getAllScores().then(function(allScores) {
            res.json(allScores);
-       })
+       });
     });
 
     app.get('/api/quizz/next', function(req, res) {

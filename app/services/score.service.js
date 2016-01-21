@@ -1,6 +1,7 @@
 'use strict';
 
-var redis = require('redis');
+var redis = require('redis'),
+    Q = require('Q');
 
 var client = redis.createClient();
 
@@ -13,7 +14,7 @@ exports.newAnswer = function(login, isCorrect, cb) {
             var returnUserScore = function(err, successCount) {
                 var userScore = {
                     questions: questionsCount,
-                    answers: successCount
+                    success: successCount
                 };
 
                 cb(null, userScore);
@@ -30,19 +31,39 @@ exports.newAnswer = function(login, isCorrect, cb) {
 };
 
 
-exports.getAllScores = function(cb) {
+exports.getAllScores = function() {
 
-    client.smembers('users', function(err, users) {
-        console.log(users);
+    var deferred = Q.defer();
 
-        cb(null, {
-            'jsebfranck': {
-                questions: 10,
-                answers: 5
-            }
+    var getSetValues = Q.nbind(client.smembers, client);
+    var hGetAll = Q.nbind(client.hgetall, client);
+
+    getSetValues('users').then(function(users) {
+
+        var promises = users.map(function(user) {
+            return hGetAll(user).then(function(result) {
+                return {
+                    login: user,
+                    result: result
+                }
+            });
         });
 
+        Q.allSettled(promises).then(function(promisesResult) {
+
+            var allScores = {};
+
+            promisesResult.forEach(function(promisesResult) {
+                var login = promisesResult.value.login;
+                var userScore = promisesResult.value.result;
+                allScores[login] = userScore;
+            });
+
+            deferred.resolve(allScores);
+        });
     });
+
+    return deferred.promise;
 };
 
 

@@ -51,6 +51,6 @@ var shuffle = function(array) {
 };
 
 exports.getAllScores = function(cb) {
-    scoreService.getAllScores(cb);
+    return scoreService.getAllScores(cb);
 };
 

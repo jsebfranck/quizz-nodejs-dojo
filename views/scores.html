@@ -24,8 +24,8 @@
             <tr data-ng-repeat="(login, scoreEntry) in allScores">
                 <td data-ng-bind="login"></td>
                 <td data-ng-bind="scoreEntry.questions"></td>
-                <td data-ng-bind="scoreEntry.answers"></td>
-                <td data-ng-bind="scoreEntry.answers * 100 / scoreEntry.questions"></td>
+                <td data-ng-bind="scoreEntry.success"></td>
+                <td data-ng-bind="scoreEntry.success * 100 / scoreEntry.questions"></td>
             </tr>
             </tbody>
         </table>
