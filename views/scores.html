@@ -32,13 +32,6 @@
     </div>
 </div>
 
-<script src="static/lib/socket.io-client/socket.io.js"></script>
-<script>
-    var socket = io.connect('http://localhost:3001');
-    socket.on('new_answer', function (data) {
-        console.log(data);
-    });
-</script>
 {% endblock %}
 
 

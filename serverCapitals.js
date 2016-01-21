@@ -1,8 +1,8 @@
-'use strict';
+var express = require('express');
 
-var request = require('request');
+var app = express();
 
-/*var capitals = [{
+var capitals = [{
     country: 'Slovénie',
     city: 'Ljubljana'
 }, {
@@ -29,7 +29,7 @@ var request = require('request');
 }, {
     country: 'Venezuela',
     city: 'Caracas'
-} ];*/
+} ];
 
 /*
  Abou Dabi	Drapeau des Émirats arabes unis Émirats arabes unis
@@ -238,62 +238,8 @@ var request = require('request');
  Zagreb	Drapeau de la Croatie Croatie
  * */
 
-/*exports.getCapitals = function(cb) {
-    cb(null, capitals);
-};*/
+app.get('/capitals', function(req, res) {
+    res.json(capitals);
+});
 
-exports.getCapitals = function(cb) {
-
-    var options = {
-        method: 'GET',
-        url: 'http://localhost:4000/capitals',
-        json: true,
-        timeout: 1000
-    };
-
-    request(options, function(err, response, body) {
-        if (err) {
-            cb(err);
-        } else if (response.statusCode !== 200) {
-            cb(new Error('timeout'));
-        } else {
-            cb(null, body);
-        }
-    });
-};
-
-exports.getCapitalByCountry = function(country, cb) {
-    exports.getCapitals(function(err, capitals) {
-        var foundCapital;
-
-        capitals.forEach(function(capital) {
-            if (capital.country === country) {
-                foundCapital = capital;
-                return;
-            }
-        });
-
-        if (foundCapital) {
-            cb(null, foundCapital);
-        } else {
-            var error = new Error('Unknown country : ' + country);
-            cb(error);
-        }
-    });
-};
-
-exports.getRandomCapitals = function(cb) {
-    exports.getCapitals(function(err, capitals) {
-
-        var randomCapitals = [];
-
-        for (var i = 0 ; i < 4 ; i++) {
-            var randomCapitalNumber = Math.floor((Math.random() * capitals.length));
-
-            var randomCapital = capitals[randomCapitalNumber];
-            randomCapitals.push(randomCapital);
-        }
-
-        cb(null, randomCapitals);
-    });
-};
+app.listen(4000);
