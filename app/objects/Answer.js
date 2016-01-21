@@ -1,3 +1,4 @@
+'use strict';
 
 class Answer {
     constructor(login, country, userChoice) {
@@ -5,12 +6,15 @@ class Answer {
         this.country = country;
         this.userChoice = userChoice;
     }
+
     getLogin() {
         return this.login;
     }
+
     getCountry() {
         return this.country;
     }
+
     getUserChoice() {
         return this.userChoice;
     }

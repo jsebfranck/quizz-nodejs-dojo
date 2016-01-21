@@ -1,3 +1,4 @@
+'use strict';
 
 var service = require('../app/services/score.service')
 
