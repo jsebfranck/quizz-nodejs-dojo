@@ -1,18 +1,12 @@
-'use strict';
 
-var capitalsService = require('./capitals.service'),
-    scoreService = require('./score.service'),
-    arrayUtil = require('./array.util');
+var capitalsService = require('./capitals.service');
 
 exports.answerQuestion = function (answer, cb) {
     capitalsService.getCapitalByCountry(answer.getCountry(), function (err, expectedCapital) {
         var isCorrect = !err && answer.getUserChoice() === expectedCapital.city;
 
-        scoreService.newAnswer(answer.getLogin(), isCorrect, function (err, score) {
-            cb(null, {
-                userScore: score,
-                isCorrect: isCorrect
-            });
+        cb(null, {
+            isCorrect: isCorrect
         });
     });
 };
@@ -30,8 +24,6 @@ exports.getNewQuestion = function (cb) {
             return capital.city;
         });
 
-        arrayUtil.shuffleArray(cities);
-
         cb(null, {
             country: capitals[0].country,
             cities: cities
@@ -39,7 +31,4 @@ exports.getNewQuestion = function (cb) {
     });
 };
 
-exports.getAllScores = function (cb) {
-    return scoreService.getAllScores(cb);
-};
 
