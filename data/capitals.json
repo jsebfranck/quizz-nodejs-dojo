@@ -68,7 +68,7 @@
     "country": "Érythrée"
   },
   {
-    "city": "Astana4",
+    "city": "Astana",
     "country": "Kazakhstan"
   },
   {
@@ -78,10 +78,6 @@
   {
     "city": "Athènes",
     "country": "Grèce"
-  },
-  {
-    "city": "Avarua",
-    "country": "Îles"
   },
   {
     "city": "Bagdad",
@@ -116,7 +112,7 @@
     "country": "Allemagne"
   },
   {
-    "city": "Berne5",
+    "city": "Berne",
     "country": "Suisse"
   },
   {
@@ -168,10 +164,6 @@
     "country": "Burundi"
   },
   {
-    "city": "Le",
-    "country": "Caire"
-  },
-  {
     "city": "Canberra",
     "country": "Australie"
   },
@@ -200,10 +192,6 @@
     "country": "Syrie"
   },
   {
-    "city": "Dar",
-    "country": "es"
-  },
-  {
     "city": "Dacca",
     "country": "Bangladesh"
   },
@@ -212,7 +200,7 @@
     "country": "Djibouti"
   },
   {
-    "city": "Dodoma8",
+    "city": "Dodoma",
     "country": "Tanzanie"
   },
   {
@@ -304,16 +292,12 @@
     "country": "Jamaïque"
   },
   {
-    "city": "Melekeok28",
+    "city": "Melekeok",
     "country": "Palaos"
   },
   {
     "city": "Koweït",
     "country": "Koweït"
-  },
-  {
-    "city": "Kuala",
-    "country": "Lumpur29"
   },
   {
     "city": "Libreville",
@@ -440,10 +424,6 @@
     "country": "Tchad"
   },
   {
-    "city": "New",
-    "country": "Delhi"
-  },
-  {
     "city": "Niamey",
     "country": "Niger"
   },
@@ -548,20 +528,12 @@
     "country": "Dominique"
   },
   {
-    "city": "Saint",
-    "country": "John's"
-  },
-  {
     "city": "Saint-Georges",
     "country": "Grenade"
   },
   {
     "city": "Saint-Marin",
     "country": "Saint-Marin"
-  },
-  {
-    "city": "San",
-    "country": "Salvador"
   },
   {
     "city": "Sanaa",
@@ -612,7 +584,7 @@
     "country": "Estonie"
   },
   {
-    "city": "Tarawa-Sud34",
+    "city": "Tarawa-Sud",
     "country": "Kiribati"
   },
   {
