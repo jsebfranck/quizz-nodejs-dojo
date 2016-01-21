@@ -24,7 +24,7 @@ quizzApp.controller('QuizzController', function ($scope, $http) {
                 cities: cities
             };
         });
-    }
+    };
 
     $scope.initQuizz = function() {
         updateQuestion($http);

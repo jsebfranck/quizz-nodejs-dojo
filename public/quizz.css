@@ -1,7 +1,21 @@
 .badge-success {
-   background-color: green !important;
+   background-color: #69F0AE !important;
 }
 
 .badge-fail {
-    background-color: red !important;
+    background-color: #F8BBD0 !important;
+}
+
+.question-choice {
+    background-color: #B2DFDB !important;
+    border-color: #B2DFDB !important;
+    margin-right: 20px;
+}
+
+.alert-success {
+    background-color: #69F0AE !important;
+}
+
+.alert-danger {
+    background-color: #F8BBD0 !important;
 }
