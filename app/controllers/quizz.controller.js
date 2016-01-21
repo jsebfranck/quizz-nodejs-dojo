@@ -18,7 +18,17 @@ module.exports = function(app, io) {
         res.render('template');
     });
 
+    app.get('/scores', function(req, res) {
+        res.render('scores');
+    });
+
     // API
+
+    app.get('/api/scores', function(req, res) {
+        quizz.getAllScores(function(err, allScores) {
+           res.json(allScores);
+       })
+    });
 
     app.get('/api/quizz/next', function(req, res) {
 
@@ -31,10 +41,10 @@ module.exports = function(app, io) {
         var answer = new Answer(req.body.login, req.body.country, req.body.userChoice);
 
         quizz.answerQuestion(answer, function(err, result) {
-            /*io.emit('new_answer', {
+            io.sockets.emit('new_answer', {
                 login: req.body.login,
                 isCorrect: result.isCorrect
-            });*/
+            });
 
             res.json(result);
         });

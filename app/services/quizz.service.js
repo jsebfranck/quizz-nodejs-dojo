@@ -9,7 +9,7 @@ exports.answerQuestion = function(answer, cb) {
 
         scoreService.newAnswer(answer.getLogin(), isCorrect, function(err, score) {
             cb(null, {
-                score: score,
+                userScore: score,
                 isCorrect: isCorrect
             });
         });
@@ -48,5 +48,9 @@ var shuffle = function(array) {
         array[i] = array[j];
         array[j] = temp;
     }
+};
+
+exports.getAllScores = function(cb) {
+    scoreService.getAllScores(cb);
 };
 

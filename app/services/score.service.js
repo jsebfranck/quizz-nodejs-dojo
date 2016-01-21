@@ -4,33 +4,46 @@ var redis = require('redis');
 
 var client = redis.createClient();
 
+
 exports.newAnswer = function(login, isCorrect, cb) {
 
-    client.hincrby(login, 'questions', 1, function(err, questionsCount) {
-        if (isCorrect) {
-            client.hincrby(login, 'success', 1, function(err, successCount) {
-                var score = {};
-                score[login] = {
+    client.sadd('users', login, function() {
+        client.hincrby(login, 'questions', 1, function(err, questionsCount) {
+
+            var returnUserScore = function(err, successCount) {
+                var userScore = {
                     questions: questionsCount,
                     answers: successCount
                 };
 
-                cb(null, score);
-            });
-        } else {
-            client.hget(login, 'success', function(err, successCount) {
-                var score = {};
-                score[login] = {
-                    questions: questionsCount,
-                    answers: successCount
-                };
+                cb(null, userScore);
+            };
 
-                cb(null, score);
-            });
-        }
+
+            if (isCorrect) {
+                client.hincrby(login, 'success', 1, returnUserScore);
+            } else {
+                client.hget(login, 'success', returnUserScore);
+            }
+        });
     });
 };
 
+
+exports.getAllScores = function(cb) {
+
+    client.smembers('users', function(err, users) {
+        console.log(users);
+
+        cb(null, {
+            'jsebfranck': {
+                questions: 10,
+                answers: 5
+            }
+        });
+
+    });
+};
 
 
 /* var score = {};

@@ -6,78 +6,65 @@
         <p>Devenez un expert des capitales du monde !</p>
     </div>
 
-    <div class="row">
+    <div class="row" data-ng-hide="isConnected">
         <div class="col-sm-16">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Vous</h3>
+                    <h3 class="panel-title">Connexion</h3>
                 </div>
                 <div class="panel-body">
                     <fieldset class="form-group">
-                        <label for="login">Login</label>
-                        <input type="text" class="form-control" id="login" placeholder="Votre login" data-ng-model="login">
+
+                        <form name="loginForm" data-ng-submit="connectUser()">
+                            <input type="text" class="form-control" id="login" placeholder="Votre login" data-ng-model="login" required>
+                            <br/>
+                            <button type="submit" class="btn btn-primary">Je veux jouer !</button>
+                        </form>
                     </fieldset>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="alert alert-success" role="alert" data-ng-show="showSuccessMessage">
-        Bien joué!
-    </div>
-    <div class="alert alert-danger" role="alert" data-ng-show="showFailedMessage">
-        <strong>Mauvaise réponse</strong>, <a href="/revisions">il faut réviser encore !</a>
-    </div>
+    <div data-ng-show="isConnected">
+        <div class="alert alert-success" role="alert" data-ng-show="showSuccessMessage">
+            Bien joué!
+        </div>
+        <div class="alert alert-danger" role="alert" data-ng-show="showFailedMessage">
+            <strong>Mauvaise réponse</strong>, <a href="/revisions">il faut réviser encore !</a>
+        </div>
 
-    <div class="row" data-ng-hide="login == ''">
-        <div class="col-sm-16">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Quelle est la capitale de <span data-ng-bind="question.country"></span> ?</h3>
+        <div class="row" data-ng-init="initQuizz()">
+            <div class="col-sm-16">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Quelle est la capitale de <span data-ng-bind="question.country"></span> ?</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>
+                            <button type="button" class="btn btn-lg btn-default"
+                                    data-ng-repeat="city in question.cities track by $index"
+                                    data-ng-bind="city"
+                                    data-ng-click="answer(city)"></button>
+                        </p>
+                    </div>
                 </div>
-                <div class="panel-body">
-                    <p>
-                        <button type="button" class="btn btn-lg btn-default"
-                                data-ng-repeat="city in question.cities track by $index"
-                                data-ng-bind="city"
-                                data-ng-click="answer(city)"></button>
-                    </p>
+            </div>
+        </div>
+
+        <div data-ng-show="userScore">
+            <div class="page-header">
+                <h1>Votre score</h1>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <p>Nombre de questions répondues : <span data-ng-bind="userScore.questions"></span></p>
+                    <p>Nombre de réponses correctes : <span data-ng-bind="userScore.answers"></span></p>
+                    <p>Ratio de réponses correctes : <span data-ng-bind="userScore.answers * 100 / userScore.questions"></span>%</p>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="page-header">
-        <h1>Scores</h1>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>Login</th>
-                    <th>Questions</th>
-                    <th>Réponses avec succès</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr data-ng-repeat="(login, scoreEntry) in score">
-                    <td data-ng-bind="login"></td>
-                    <td data-ng-bind="scoreEntry.questions"></td>
-                    <td data-ng-bind="scoreEntry.answers"></td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <script src="static/lib/socket.io-client/socket.io.js"></script>
-    <script>
-        var socket = io.connect('http://localhost:3001');
-        socket.on('new_answer', function (data) {
-            console.log(data);
-        });
-    </script>
 {% endblock %}
 
 
