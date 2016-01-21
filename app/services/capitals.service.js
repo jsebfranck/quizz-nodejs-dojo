@@ -239,6 +239,10 @@ var request = require('request');
  * */
 
 /*exports.getCapitals = function(cb) {
+
+ var capitals = require(__dirname + '/../../data/capitals.json');
+
+
  cb(null, capitals);
  };*/
 
@@ -282,12 +286,12 @@ exports.getCapitalByCountry = function (country, cb) {
     });
 };
 
-exports.getRandomCapitals = function (cb) {
+exports.getRandomCapitals = function (count, cb) {
     exports.getCapitals(function (err, capitals) {
 
         var randomCapitals = [];
 
-        for (var i = 0; i < 4; i++) {
+        for (var i = 0; i < count; i++) {
             var randomCapitalNumber = Math.floor((Math.random() * capitals.length));
 
             var randomCapital = capitals[randomCapitalNumber];

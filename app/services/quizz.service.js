@@ -37,7 +37,7 @@ var shuffle = function (array) {
 
 exports.newQuestion = function (cb) {
 
-    capitalsService.getRandomCapitals(function (err, capitals) {
+    capitalsService.getRandomCapitals(6, function (err, capitals) {
         var cities = capitals.map(function (capital) {
             return capital.city;
         });
