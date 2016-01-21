@@ -252,12 +252,10 @@ exports.getCapitalByCountry = function(country, cb) {
 
     if (foundCapital) {
         cb(null, foundCapital);
+    } else {
+        var error = new Error('Unknown country : ' + country);
+        cb(error);
     }
-
-    var error = new Error('Unknown country : ' + country);
-
-    console.error(error);
-    cb(error);
 };
 
 exports.getRandomCapitals = function(cb) {

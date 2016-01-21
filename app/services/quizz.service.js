@@ -17,7 +17,9 @@ exports.answerQuestion = function(answer, cb) {
 };
 
 exports.getCapitals = function(cb) {
-    cb(null, capitalsService.getCapitals());
+    capitalsService.getCapitals(function(err, capitals) {
+        cb(null, capitals);
+    });
 };
 
 exports.newQuestion = function (cb) {

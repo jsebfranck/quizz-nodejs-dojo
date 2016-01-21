@@ -9,7 +9,9 @@ module.exports = function(app, io) {
     });
 
     app.get('/revisions', function(req, res) {
-        res.render('revisions', { capitals: quizz.getCapitals() });
+        quizz.getCapitals(function(err, capitals) {
+            res.render('revisions', { capitals: capitals });
+        });
     });
 
     app.get('/template', function(req, res) {
@@ -17,13 +19,6 @@ module.exports = function(app, io) {
     });
 
     // API
-
-    app.get('/api/questions', function(req, res) {
-
-        quizz.getCapitals(function(err, capitals) {
-            res.json(capitals);
-        });
-    });
 
     app.get('/api/quizz/next', function(req, res) {
 

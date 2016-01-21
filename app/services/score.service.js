@@ -9,22 +9,20 @@ exports.newAnswer = function(login, isCorrect, cb) {
     client.hincrby(login, 'questions', 1, function(err, questionsCount) {
         if (isCorrect) {
             client.hincrby(login, 'success', 1, function(err, successCount) {
-                var score = {
-                    login: {
-                        questions: questionsCount,
-                        answers: successCount
-                    }
+                var score = {};
+                score[login] = {
+                    questions: questionsCount,
+                    answers: successCount
                 };
 
                 cb(null, score);
             });
         } else {
             client.hget(login, 'success', function(err, successCount) {
-                var score = {
-                    login: {
-                        questions: questionsCount,
-                        answers: successCount
-                    }
+                var score = {};
+                score[login] = {
+                    questions: questionsCount,
+                    answers: successCount
                 };
 
                 cb(null, score);
@@ -33,8 +31,9 @@ exports.newAnswer = function(login, isCorrect, cb) {
     });
 };
 
-/*
- var score = {};
+
+
+/* var score = {};
 
 exports.newAnswer = function(login, isCorrect, cb) {
 
