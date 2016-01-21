@@ -11,11 +11,11 @@ quizzApp.controller('QuizzController', function ($scope, $http) {
     $scope.newSuccessAnswer = 0;
     $scope.newFailAnswer = 0;
 
-    var updateQuestion = function($http) {
-        $http.get('/api/quizz/next').success(function(data) {
+    var updateQuestion = function ($http) {
+        $http.get('/api/quizz/next').success(function (data) {
             var cities = [];
 
-            data.cities.forEach(function(city) {
+            data.cities.forEach(function (city) {
                 cities.push(city);
             });
 
@@ -26,7 +26,7 @@ quizzApp.controller('QuizzController', function ($scope, $http) {
         });
     };
 
-    $scope.initQuizz = function() {
+    $scope.initQuizz = function () {
         updateQuestion($http);
 
         var socket = io.connect('http://localhost:3001');
@@ -46,7 +46,7 @@ quizzApp.controller('QuizzController', function ($scope, $http) {
         });
     };
 
-    $scope.answer = function(userChoice) {
+    $scope.answer = function (userChoice) {
 
         $scope.showSuccessMessage = false;
         $scope.showFailedMessage = false;
@@ -57,7 +57,7 @@ quizzApp.controller('QuizzController', function ($scope, $http) {
             login: $scope.login
         };
 
-        $http.post('/api/quizz/answer', answer).success(function(data) {
+        $http.post('/api/quizz/answer', answer).success(function (data) {
             if (data.isCorrect) {
                 $scope.showSuccessMessage = true;
             } else {
@@ -70,16 +70,16 @@ quizzApp.controller('QuizzController', function ($scope, $http) {
         });
     };
 
-    $scope.connectUser = function() {
+    $scope.connectUser = function () {
         $scope.isConnected = true;
     };
 
-    $scope.getAllScores = function() {
+    $scope.getAllScores = function () {
 
         $scope.newSuccessAnswer = 0;
         $scope.newFailAnswer = 0;
 
-        $http.get('/api/scores').success(function(data) {
+        $http.get('/api/scores').success(function (data) {
             $scope.allScores = data;
         });
     }

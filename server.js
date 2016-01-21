@@ -20,7 +20,7 @@ app.set('view engine', 'html');
 app.set('views', __dirname + '/views');
 
 
-var server = app.listen(3001, function() {
+var server = app.listen(3001, function () {
     console.log('App started');
 });
 

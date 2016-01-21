@@ -3,33 +3,33 @@
 var request = require('request');
 
 /*var capitals = [{
-    country: 'Slovénie',
-    city: 'Ljubljana'
-}, {
-    country: 'France',
-    city: 'Paris'
-}, {
-    country: 'Jordanie',
-    city: 'Amman'
-}, {
-    country: 'Allemagne',
-    city: 'Berlin'
-}, {
-    country: 'Nigeria',
-    city: 'Abuja'
-}, {
-    country: 'Ghana',
-    city: 'Accra'
-}, {
-    country: 'Pays-Bas',
-    city: 'Amsterdam'
-}, {
-    country: 'Samoa',
-    city: 'Aspia'
-}, {
-    country: 'Venezuela',
-    city: 'Caracas'
-} ];*/
+ country: 'Slovénie',
+ city: 'Ljubljana'
+ }, {
+ country: 'France',
+ city: 'Paris'
+ }, {
+ country: 'Jordanie',
+ city: 'Amman'
+ }, {
+ country: 'Allemagne',
+ city: 'Berlin'
+ }, {
+ country: 'Nigeria',
+ city: 'Abuja'
+ }, {
+ country: 'Ghana',
+ city: 'Accra'
+ }, {
+ country: 'Pays-Bas',
+ city: 'Amsterdam'
+ }, {
+ country: 'Samoa',
+ city: 'Aspia'
+ }, {
+ country: 'Venezuela',
+ city: 'Caracas'
+ } ];*/
 
 /*
  Abou Dabi	Drapeau des Émirats arabes unis Émirats arabes unis
@@ -239,10 +239,10 @@ var request = require('request');
  * */
 
 /*exports.getCapitals = function(cb) {
-    cb(null, capitals);
-};*/
+ cb(null, capitals);
+ };*/
 
-exports.getCapitals = function(cb) {
+exports.getCapitals = function (cb) {
 
     var options = {
         method: 'GET',
@@ -251,7 +251,7 @@ exports.getCapitals = function(cb) {
         timeout: 1000
     };
 
-    request(options, function(err, response, body) {
+    request(options, function (err, response, body) {
         if (err) {
             cb(err);
         } else if (response.statusCode !== 200) {
@@ -262,11 +262,11 @@ exports.getCapitals = function(cb) {
     });
 };
 
-exports.getCapitalByCountry = function(country, cb) {
-    exports.getCapitals(function(err, capitals) {
+exports.getCapitalByCountry = function (country, cb) {
+    exports.getCapitals(function (err, capitals) {
         var foundCapital;
 
-        capitals.forEach(function(capital) {
+        capitals.forEach(function (capital) {
             if (capital.country === country) {
                 foundCapital = capital;
                 return;
@@ -282,12 +282,12 @@ exports.getCapitalByCountry = function(country, cb) {
     });
 };
 
-exports.getRandomCapitals = function(cb) {
-    exports.getCapitals(function(err, capitals) {
+exports.getRandomCapitals = function (cb) {
+    exports.getCapitals(function (err, capitals) {
 
         var randomCapitals = [];
 
-        for (var i = 0 ; i < 4 ; i++) {
+        for (var i = 0; i < 4; i++) {
             var randomCapitalNumber = Math.floor((Math.random() * capitals.length));
 
             var randomCapital = capitals[randomCapitalNumber];

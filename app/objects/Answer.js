@@ -1,4 +1,3 @@
-'use strict';
 
 class Answer {
     constructor(login, country, userChoice) {

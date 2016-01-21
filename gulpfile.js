@@ -6,17 +6,23 @@ var gulp = require('gulp'),
     _ = require('lodash'),
     plugins = gulpLoadPlugins();
 
-// Nodemon task
 gulp.task('nodemon', function () {
-  return plugins.nodemon({
-    script: 'server.js',
-    nodeArgs: ['--debug'],
-    ext: 'js,html',
-    watch: _.union('views/*.html', 'app/**/*.js', 'server.js')
-  });
+    return plugins.nodemon({
+        script: 'server.js',
+        nodeArgs: ['--debug'],
+        ext: 'js,html',
+        watch: _.union('views/*.html', 'app/**/*.js', 'server.js')
+    });
 });
 
-// Run the project in development mode
-gulp.task('default', function(done) {
-  runSequence('nodemon', done);
+gulp.task('lint', function () {
+    var eslint = plugins.eslint;
+    return gulp.src(['**/*.js', '!node_modules/**', '!public/lib/**'])
+        .pipe(eslint())
+        .pipe(eslint.format())
+        .pipe(eslint.failAfterError());
+});
+
+gulp.task('default', function (done) {
+    runSequence('lint', 'nodemon', done);
 });

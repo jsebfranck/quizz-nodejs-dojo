@@ -6,12 +6,12 @@ var redis = require('redis'),
 var client = redis.createClient();
 
 
-exports.newAnswer = function(login, isCorrect, cb) {
+exports.newAnswer = function (login, isCorrect, cb) {
 
-    client.sadd('users', login, function() {
-        client.hincrby(login, 'questions', 1, function(err, questionsCount) {
+    client.sadd('users', login, function () {
+        client.hincrby(login, 'questions', 1, function (err, questionsCount) {
 
-            var returnUserScore = function(err, successCount) {
+            var returnUserScore = function (err, successCount) {
                 var userScore = {
                     questions: questionsCount,
                     success: successCount
@@ -31,17 +31,17 @@ exports.newAnswer = function(login, isCorrect, cb) {
 };
 
 
-exports.getAllScores = function() {
+exports.getAllScores = function () {
 
     var deferred = Q.defer();
 
     var getSetValues = Q.nbind(client.smembers, client);
     var hGetAll = Q.nbind(client.hgetall, client);
 
-    getSetValues('users').then(function(users) {
+    getSetValues('users').then(function (users) {
 
-        var promises = users.map(function(user) {
-            return hGetAll(user).then(function(result) {
+        var promises = users.map(function (user) {
+            return hGetAll(user).then(function (result) {
                 return {
                     login: user,
                     result: result
@@ -49,11 +49,11 @@ exports.getAllScores = function() {
             });
         });
 
-        Q.allSettled(promises).then(function(promisesResult) {
+        Q.allSettled(promises).then(function (promisesResult) {
 
             var allScores = {};
 
-            promisesResult.forEach(function(promisesResult) {
+            promisesResult.forEach(function (promisesResult) {
                 var login = promisesResult.value.login;
                 var userScore = promisesResult.value.result;
                 allScores[login] = userScore;
@@ -69,20 +69,20 @@ exports.getAllScores = function() {
 
 /* var score = {};
 
-exports.newAnswer = function(login, isCorrect, cb) {
+ exports.newAnswer = function(login, isCorrect, cb) {
 
-    if (!score[login]) {
-        score[login] = {
-            questions: 0,
-            answers: 0
-        };
-    };
+ if (!score[login]) {
+ score[login] = {
+ questions: 0,
+ answers: 0
+ };
+ };
 
-    score[login].questions++;
+ score[login].questions++;
 
-    if (isCorrect) {
-        score[login].answers++;
-    }
+ if (isCorrect) {
+ score[login].answers++;
+ }
 
-    cb(null, score);
-};*/
+ cb(null, score);
+ };*/
