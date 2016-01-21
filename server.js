@@ -17,11 +17,10 @@ app.use(bodyParser.urlencoded({
 
 app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
-app.set('views', __dirname + '/views');
-
+app.set('views', __dirname + '/app/views');
 
 var server = app.listen(3001, function () {
-    console.log('App started');
+    console.log('App available on http://localhost:3001');
 });
 
 var io = socketIO.listen(server);
