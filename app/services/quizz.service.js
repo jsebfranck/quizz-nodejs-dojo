@@ -38,11 +38,11 @@ var shuffle = function (array) {
 exports.newQuestion = function (cb) {
 
     capitalsService.getRandomCapitals(function (err, capitals) {
-        shuffle(capitals);
-
         var cities = capitals.map(function (capital) {
             return capital.city;
         });
+
+        shuffle(cities);
 
         cb(null, {
             country: capitals[0].country,
