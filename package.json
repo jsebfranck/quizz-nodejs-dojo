@@ -1,5 +1,5 @@
 {
-  "name": "beers-nodejs-dojo",
+  "name": "quizz-nodejs-dojo",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jsebfranck/beers-nodejs-dojo.git"
+    "url": "git+https://github.com/jsebfranck/quizz-nodejs-dojo.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jsebfranck/beers-nodejs-dojo/issues"
+    "url": "https://github.com/jsebfranck/quizz-nodejs-dojo/issues"
   },
-  "homepage": "https://github.com/jsebfranck/beers-nodejs-dojo#readme",
+  "homepage": "https://github.com/jsebfranck/quizz-nodejs-dojo#readme",
   "dependencies": {
     "body-parser": "^1.14.2",
     "chai": "^3.4.1",
