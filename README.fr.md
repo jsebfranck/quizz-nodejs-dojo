@@ -3,7 +3,7 @@
 
 # User Story #1 : Gestion du Quizz
 
-### Objectif technique : maîtriser les bases de JavaScript
+### Objectif technique : comprendre les bases de JavaScript et de Node.js
 
 Instructions :
 - ...
