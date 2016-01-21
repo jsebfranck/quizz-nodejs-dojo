@@ -79,7 +79,7 @@ quizzApp.controller('QuizzController', function ($scope, $http) {
         $scope.newSuccessAnswer = 0;
         $scope.newFailAnswer = 0;
 
-        $http.get('/api/scores').success(function (data) {
+        $http.get('/api/quizz/scores').success(function (data) {
             $scope.allScores = data;
         });
     }

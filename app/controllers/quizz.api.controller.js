@@ -4,29 +4,8 @@ var Answer = require('../objects/Answer'),
     quizz = require('../services/quizz.service');
 
 module.exports = function (app, io) {
-    // Vues
 
-    app.get('/', function (req, res) {
-        res.render('index');
-    });
-
-    app.get('/revisions', function (req, res) {
-        quizz.getCapitals(function (err, capitals) {
-            res.render('revisions', { capitals: capitals });
-        });
-    });
-
-    app.get('/template', function (req, res) {
-        res.render('template');
-    });
-
-    app.get('/scores', function (req, res) {
-        res.render('scores');
-    });
-
-    // API
-
-    app.get('/api/scores', function (req, res) {
+    app.get('/api/quizz/scores', function (req, res) {
         quizz.getAllScores().then(function (allScores) {
             res.json(allScores);
         });
@@ -34,7 +13,7 @@ module.exports = function (app, io) {
 
     app.get('/api/quizz/next', function (req, res) {
 
-        quizz.newQuestion(function (err, question) {
+        quizz.getNewQuestion(function (err, question) {
             res.json(question);
         });
     });

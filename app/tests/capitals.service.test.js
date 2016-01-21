@@ -3,7 +3,7 @@
 var chai = require('chai'),
     nock = require('nock');
 var assert = chai.assert;
-var capitals = require('../app/services/capitals.service');
+var capitals = require('../services/capitals.service');
 
 describe('capitalsService', function () {
 

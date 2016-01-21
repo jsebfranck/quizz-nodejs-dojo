@@ -1,22 +1,19 @@
 'use strict';
 
 var chai = require('chai');
-var assert = chai.assert;
-var quizz = require('../app/services/quizz');
+
+var quizz = require('../services/quizz.service'),
+    Answer = require('../objects/Answer');
 
 describe('quizz', function() {
 
     describe('answerQuestion', function() {
         it('should return score', function() {
+            var answer = new Answer('jsebfranck', 'France', 'Paris');
 
-            var answer = {
-                login: 'jsebfranck',
-                country: 'France',
-                userChoice: 'Paris'
-            };
-
-            var score = quizz.answerQuestion(answer);
-            console.log(score);
+            quizz.answerQuestion(answer, function(err, score) {
+                console.log(score);
+            });
         });
     });
 });

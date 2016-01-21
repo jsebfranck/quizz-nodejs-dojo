@@ -1,7 +1,8 @@
 'use strict';
 
 var capitalsService = require('./capitals.service'),
-    scoreService = require('./score.service');
+    scoreService = require('./score.service'),
+    arrayUtil = require('./array.util');
 
 exports.answerQuestion = function (answer, cb) {
     capitalsService.getCapitalByCountry(answer.getCountry(), function (err, expectedCapital) {
@@ -22,27 +23,14 @@ exports.getCapitals = function (cb) {
     });
 };
 
-var shuffle = function (array) {
-    var j = 0;
-    var temp = null;
-
-    for (var i = array.length - 1; i > 0; i -= 1) {
-        j = Math.floor(Math.random() * (i + 1));
-        temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-    }
-    return array;
-};
-
-exports.newQuestion = function (cb) {
+exports.getNewQuestion = function (cb) {
 
     capitalsService.getRandomCapitals(6, function (err, capitals) {
         var cities = capitals.map(function (capital) {
             return capital.city;
         });
 
-        shuffle(cities);
+        arrayUtil.shuffleArray(cities);
 
         cb(null, {
             country: capitals[0].country,
