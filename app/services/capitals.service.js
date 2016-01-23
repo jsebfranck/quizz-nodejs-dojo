@@ -1,28 +1,10 @@
 'use strict';
 
-var request = require('request');
-
-
 // Renvoie la liste de toutes les capitales
 // Exemple de capitale : { "country": "France", "city": "Paris" }
 var getCapitals = function (cb) {
 
-    var options = {
-        method: 'GET',
-        url: 'http://localhost:4000/capitals',
-        json: true,
-        timeout: 1000
-    };
-
-    request(options, function (err, response, body) {
-        if (err) {
-            cb(err);
-        } else if (response.statusCode !== 200) {
-            cb(new Error('timeout'));
-        } else {
-            cb(null, body);
-        }
-    });
+    //TODO
 };
 
 exports.getCapitals = getCapitals;
