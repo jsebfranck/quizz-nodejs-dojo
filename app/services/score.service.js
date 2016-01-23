@@ -32,6 +32,8 @@ exports.newAnswer = function (login, isCorrect, cb) {
     });
 };
 
+// Renvoie le score de tous les utilisateurs
+// Exemple de résultat : { john: {questions:20, success:12 }, tim: {questions:8, success:7}}
 exports.getAllScores = function () {
 
     var deferred = Q.defer();
