@@ -1,24 +1,32 @@
 'use strict';
 
-var score = {};
+var redis = require('redis');
+
+var client = redis.createClient();
 
 // Enregistre le score de l'utilisateur
 // Puis répond avec le score de l'utilisateur sour la forme :
 //   { questions: <nombre de questions déjà répondues>, success: <nombre de questions répondues avec succès>}
 exports.newAnswer = function (login, isCorrect, cb) {
 
-    if (!score[login]) {
-        score[login] = {
-            questions: 0,
-            success: 0
-        };
-    };
+    client.sadd('users', login, function () {
+        client.hincrby(login, 'questions', 1, function (err, questionsCount) {
 
-    score[login].questions++;
+            var returnUserScore = function (err, successCount) {
+                var userScore = {
+                    questions: questionsCount,
+                    success: successCount
+                };
 
-    if (isCorrect) {
-        score[login].success++;
-    }
+                cb(null, userScore);
+            };
 
-    cb(null, score[login]);
+
+            if (isCorrect) {
+                client.hincrby(login, 'success', 1, returnUserScore);
+            } else {
+                client.hget(login, 'success', returnUserScore);
+            }
+        });
+    });
 };
