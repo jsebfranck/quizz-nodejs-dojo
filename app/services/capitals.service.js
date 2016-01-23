@@ -1,4 +1,4 @@
-
+'use strict';
 
 // Renvoie la liste de toutes les capitales
 // Exemple de capitale : { "country": "France", "city": "Paris" }

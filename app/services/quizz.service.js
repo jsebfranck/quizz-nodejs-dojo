@@ -1,3 +1,4 @@
+'use strict';
 
 var capitalsService = require('./capitals.service');
 
