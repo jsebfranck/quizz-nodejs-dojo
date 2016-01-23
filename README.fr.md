@@ -4,6 +4,9 @@
 
 ### Objectif technique : comprendre les bases de Express.js
 
+La configuration de base d'Express se trouver dans le fichier server.js. L'objectif est de la faire évoluer pour
+afficher le quizz.
+
 Commençons par configurer le serveur :
 
 1. Installer les librairies côté client (Angular.js, Bootstrap etc). Pour cela lancer la commande "bower install". La  commande
@@ -27,7 +30,7 @@ de la méthode getNewQuestion du service de quizz
 Permettons désormais de répondre au quizz :
 
 1. Dan app/controllers/quizz.controller.js, créer une route POST sur l'url /api/quizz/answer pour permettre à l'utilisateur
-de répondre au quizz. Utiliser la classe Answer et la méthode answerQuestion du service du quizz
+de répondre au quizz. Utiliser la classe Answer et la méthode answerQuestion du service du quizz. 
 2. Consulter l'url http://localhost:3000 dans votre browser. Vous pouvez déjà commencer à jouer.
 
 Affichons enfin la page de révision du quizz :
