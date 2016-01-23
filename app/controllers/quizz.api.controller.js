@@ -19,4 +19,10 @@ module.exports = function (app) {
             res.json(result);
         });
     });
+
+    app.get('/api/quizz/scores', function (req, res) {
+        quizz.getAllScores().then(function (allScores) {
+            res.json(allScores);
+        });
+    });
 };

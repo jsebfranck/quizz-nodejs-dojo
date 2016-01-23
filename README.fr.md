@@ -1,5 +1,7 @@
 # Coding dojo Quizz Node.js
 
-# User Story #5 : Sauvegarder dans le temps les scores de l'utilisateur
+# User Story #6 : Afficher dans une page le score de tous les utilisateurs
 
-Solution.
+Objectif technique : utiliser le module Q pour mieux gérer l'asynchronisme.
+
+1. Installer le module Q dans le projet

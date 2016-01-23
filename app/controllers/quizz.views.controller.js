@@ -14,4 +14,8 @@ module.exports = function (app) {
             res.render('revisions', { capitals: capitals });
         });
     });
+
+    app.get('/scores', function (req, res) {
+        res.render('scores');
+    });
 };

@@ -55,4 +55,10 @@ quizzApp.controller('QuizzController', function ($scope, $http) {
     $scope.connectUser = function () {
         $scope.isConnected = true;
     };
+
+    $scope.getAllScores = function () {
+        $http.get('/api/quizz/scores').success(function (data) {
+            $scope.allScores = data;
+        });
+    }
 });

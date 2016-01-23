@@ -1,6 +1,7 @@
 'use strict';
 
-var redis = require('redis');
+var redis = require('redis'),
+    Q = require('q');
 
 var client = redis.createClient();
 
@@ -29,4 +30,39 @@ exports.newAnswer = function (login, isCorrect, cb) {
             }
         });
     });
+};
+
+exports.getAllScores = function () {
+
+    var deferred = Q.defer();
+
+    var getSetValues = Q.nbind(client.smembers, client);
+    var hGetAll = Q.nbind(client.hgetall, client);
+
+    getSetValues('users').then(function (users) {
+
+        var promises = users.map(function (user) {
+            return hGetAll(user).then(function (result) {
+                return {
+                    login: user,
+                    result: result
+                }
+            });
+        });
+
+        Q.allSettled(promises).then(function (promisesResult) {
+
+            var allScores = {};
+
+            promisesResult.forEach(function (promisesResult) {
+                var login = promisesResult.value.login;
+                var userScore = promisesResult.value.result;
+                allScores[login] = userScore;
+            });
+
+            deferred.resolve(allScores);
+        });
+    });
+
+    return deferred.promise;
 };
