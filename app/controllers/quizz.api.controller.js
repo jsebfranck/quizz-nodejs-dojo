@@ -16,17 +16,18 @@ module.exports = function (app, io) {
         var answer = new Answer(req.body.login, req.body.country, req.body.userChoice);
 
         quizz.answerQuestion(answer, function (err, result) {
+
+            io.sockets.emit('new_answer', {
+                login: req.body.login,
+                isCorrect: result.isCorrect
+            });
+
             res.json(result);
         });
     });
 
     app.get('/api/quizz/scores', function (req, res) {
         quizz.getAllScores().then(function (allScores) {
-            io.sockets.emit('new_answer', {
-                login: req.body.login,
-                isCorrect: result.isCorrect
-            });
-
             res.json(allScores);
         });
     });
