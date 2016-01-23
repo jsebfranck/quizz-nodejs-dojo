@@ -12,7 +12,7 @@ Le but de ce tutorial Node.js est de construire l'application ci-dessous en couv
 
 ![Preview](https://github.com/jsebfranck/quizz-nodejs-dojo/raw/master/docs/preview.png)
 
-Pour commencer, entrez la commande suivante puis suives les instructions du fichier README :
+Pour commencer, entrez la commande suivante puis suivez les instructions du fichier README :
 
 ```
 git checkout -f atelier-step1
