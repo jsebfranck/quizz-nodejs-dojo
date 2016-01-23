@@ -23,9 +23,8 @@ app.set('view engine', 'html');
 app.set('views', __dirname + '/app/views');
 
 // Start server
-app.listen(3001, function () {
-    console.log('App available on http://localhost:3001');
-});
+
+//TODO
 
 // Init controllers
 quizzApiController(app);
