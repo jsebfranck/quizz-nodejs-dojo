@@ -1,39 +1,56 @@
 'use strict';
 
-var chai = require('chai');
+var chai = require('chai'),
+    nock = require('nock');
 var assert = chai.assert;
+var capitals = require('../services/capitals.service');
 
-var capitalService = require('../services/capitals.service');
+describe('capitalsService', function () {
 
-describe('capitals.service', function() {
-    describe('getCapitals', function() {
-       it('should return all capitals', function() {
-           capitalService.getCapitals(function(err, capitals) {
-               assert.lengthOf(capitals, 26);
-           });
-       });
-    });
+    describe('getCapitals', function () {
+        it('should return capitals', function (done) {
 
-    describe('getCapitalByCountry', function() {
-        it('should return right capital', function() {
-            capitalService.getCapitalByCountry('France', function(err, capital) {
-                assert.equal('Paris', capital.city);
-                assert.equal('France', capital.country);
+            nock('http://localhost:4000')
+                .get('/capitals')
+                .reply(200, [{ 'country': 'Samoa', 'city': 'Aspia' }, { 'country': 'Venezuela', 'city': 'Caracas' }]);
+
+            capitals.getCapitals(function (err, capitals) {
+                console.log(capitals);
+
+                assert.equal(2, capitals.length);
+
+                done();
             });
         });
 
-        it('should return right capital with another country', function() {
-            capitalService.getCapitalByCountry('Turquie', function(err, capital) {
-                assert.equal('Ankara', capital.city);
-                assert.equal('Turquie', capital.country);
+        it('should return error if wrong status code', function (done) {
+
+            nock('http://localhost:4000')
+                .get('/capitals')
+                .reply(500);
+
+            capitals.getCapitals(function (err) {
+                if (err) {
+                    done();
+                } else {
+                    done(new Error('should be in error'));
+                }
             });
         });
-    });
 
-    describe('getRandomCapitals', function() {
-        it('should return right count of capital', function() {
-            capitalService.getRandomCapitals(6, function(err, capitals) {
-                assert.lengthOf(capitals, 6);
+        it('should return error if timeout', function (done) {
+
+            nock('http://localhost:4000')
+                .get('/capitals')
+                .delayConnection(1500)
+                .reply(200, [{ 'country': 'Samoa', 'city': 'Aspia' }, { 'country': 'Venezuela', 'city': 'Caracas' }]);
+
+            capitals.getCapitals(function (err) {
+                if (err) {
+                    done();
+                } else {
+                    done(new Error('should be in error'));
+                }
             });
         });
     });
