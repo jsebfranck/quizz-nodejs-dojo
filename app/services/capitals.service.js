@@ -8,7 +8,7 @@ var getCapitals = function(cb) {
 exports.getCapitals = getCapitals;
 
 exports.getCapitalByCountry = function (country, cb) {
-    exports.getCapitals(function (err, capitals) {
+    getCapitals(function (err, capitals) {
         var foundCapital;
 
         capitals.forEach(function (capital) {
@@ -28,7 +28,7 @@ exports.getCapitalByCountry = function (country, cb) {
 };
 
 exports.getRandomCapitals = function (count, cb) {
-    exports.getCapitals(function (err, capitals) {
+    getCapitals(function (err, capitals) {
 
         var randomCapitals = [];
 
