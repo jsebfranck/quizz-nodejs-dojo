@@ -5,7 +5,7 @@
 Objectif technique : Interragir avec une base de données Nosql
 
 1. Installer redis sur votre poste et démarrer le serveur redis.
-2. Utiliser l'API de redis pour stocker le score des utilisateurs.
+2. Utiliser l'API de redis pour stocker le score des utilisateurs :
 
 Deux types de données Redis vont nous être utiles pour stocker les scores : les Sets (http://redis.io/commands#set) et
 les Hashes (http://redis.io/commands#hash).
