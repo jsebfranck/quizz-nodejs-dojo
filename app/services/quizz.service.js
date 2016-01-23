@@ -43,5 +43,5 @@ exports.getNewQuestion = function (cb) {
 };
 
 exports.getAllScores = function (cb) {
-    return scoreService.getAllScores(cb);
+    //TODO
 };

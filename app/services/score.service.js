@@ -1,7 +1,6 @@
 'use strict';
 
-var redis = require('redis'),
-    Q = require('q');
+var redis = require('redis');
 
 var client = redis.createClient();
 
@@ -35,36 +34,5 @@ exports.newAnswer = function (login, isCorrect, cb) {
 // Renvoie le score de tous les utilisateurs
 // Exemple de résultat : { john: {questions:20, success:12 }, tim: {questions:8, success:7}}
 exports.getAllScores = function () {
-
-    var deferred = Q.defer();
-
-    var getSetValues = Q.nbind(client.smembers, client);
-    var hGetAll = Q.nbind(client.hgetall, client);
-
-    getSetValues('users').then(function (users) {
-
-        var promises = users.map(function (user) {
-            return hGetAll(user).then(function (result) {
-                return {
-                    login: user,
-                    result: result
-                }
-            });
-        });
-
-        Q.allSettled(promises).then(function (promisesResult) {
-
-            var allScores = {};
-
-            promisesResult.forEach(function (promisesResult) {
-                var login = promisesResult.value.login;
-                var userScore = promisesResult.value.result;
-                allScores[login] = userScore;
-            });
-
-            deferred.resolve(allScores);
-        });
-    });
-
-    return deferred.promise;
+    //TODO
 };

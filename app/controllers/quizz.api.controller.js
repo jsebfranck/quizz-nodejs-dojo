@@ -21,8 +21,6 @@ module.exports = function (app) {
     });
 
     app.get('/api/quizz/scores', function (req, res) {
-        quizz.getAllScores().then(function (allScores) {
-            res.json(allScores);
-        });
+        //TODO
     });
 };
