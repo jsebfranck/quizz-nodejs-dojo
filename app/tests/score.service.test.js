@@ -1,3 +1,5 @@
+'use strict';
+
 var scoreService = require('../services/score.service');
 
 describe('score service', function () {
