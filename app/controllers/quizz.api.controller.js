@@ -17,10 +17,7 @@ module.exports = function (app, io) {
 
         quizz.answerQuestion(answer, function (err, result) {
 
-            io.sockets.emit('new_answer', {
-                login: req.body.login,
-                isCorrect: result.isCorrect
-            });
+            //TODO
 
             res.json(result);
         });

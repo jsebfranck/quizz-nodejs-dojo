@@ -26,21 +26,17 @@ quizzApp.controller('QuizzController', function ($scope, $http) {
         });
     };
 
+    var updateNotificationsHeader = function(isCorrect, login) {
+        //TODO
+
+        $scope.$apply();
+    };
+
     var initNotifications = function() {
         var socket = io.connect('http://localhost:3001');
         socket.on('new_answer', function (data) {
-            console.log('New answer', data);
 
-            if (data.login === $scope.login) {
-                return;
-            }
-
-            if (data.isCorrect) {
-                $scope.newSuccessAnswer++;
-            } else {
-                $scope.newFailAnswer++;
-            }
-            $scope.$apply();
+            //TODO
         });
     };
 
