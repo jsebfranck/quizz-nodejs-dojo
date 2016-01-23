@@ -30,7 +30,12 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="/">Jouer</a></li>
               <li><a href="/revisions">Reviser</a></li>
-              <li><a href="/scores">Scores</a></li>
+              <li>
+                <a href="/scores">Scores des joueurs
+                  <span class="badge badge-success" data-ng-bind="newSuccessAnswer" data-ng-show="newSuccessAnswer > 0"></span>
+                  <span class="badge badge-fail" data-ng-bind="newFailAnswer" data-ng-show="newFailAnswer > 0"></span>
+                </a>
+              </li>
             </ul>
 
             <p class="navbar-text navbar-right" data-ng-show="isConnected">Bienvenue <span data-ng-bind="login"></span></p>

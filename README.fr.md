@@ -1,5 +1,8 @@
 # Coding dojo Quizz Node.js
 
-# User Story #6 : Afficher dans une page le score de tous les utilisateurs
+# User Story #7 : Notifications lorsque d'autres utilisateurs jouent
 
-Solution.
+Objectif technique : comprendre les bases des WebSockets.
+
+1. Installer le module socket.io
+2. Dans server.js, 

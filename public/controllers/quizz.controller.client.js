@@ -8,6 +8,8 @@ quizzApp.controller('QuizzController', function ($scope, $http) {
     $scope.login = '';
     $scope.showSuccessMessage = false;
     $scope.showFailedMessage = false;
+    $scope.newSuccessAnswer = 0;
+    $scope.newFailAnswer = 0;
 
     var updateQuestion = function ($http) {
         $http.get('/api/quizz/next').success(function (data) {
@@ -24,8 +26,27 @@ quizzApp.controller('QuizzController', function ($scope, $http) {
         });
     };
 
+    var initNotifications = function() {
+        var socket = io.connect('http://localhost:3001');
+        socket.on('new_answer', function (data) {
+            console.log('New answer', data);
+
+            if (data.login === $scope.login) {
+                return;
+            }
+
+            if (data.isCorrect) {
+                $scope.newSuccessAnswer++;
+            } else {
+                $scope.newFailAnswer++;
+            }
+            $scope.$apply();
+        });
+    };
+
     $scope.initQuizz = function () {
         updateQuestion($http);
+        initNotifications();
     };
 
     $scope.answer = function (userChoice) {
@@ -57,6 +78,10 @@ quizzApp.controller('QuizzController', function ($scope, $http) {
     };
 
     $scope.getAllScores = function () {
+
+        $scope.newSuccessAnswer = 0;
+        $scope.newFailAnswer = 0;
+
         $http.get('/api/quizz/scores').success(function (data) {
             $scope.allScores = data;
         });

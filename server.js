@@ -3,6 +3,7 @@
 var express = require('express'),
     swig = require('swig'),
     bodyParser = require('body-parser'),
+    socketIO = require('socket.io'),
     quizzApiController = require('./app/controllers/quizz.api.controller'),
     quizzViewsController = require('./app/controllers/quizz.views.controller');
 
@@ -23,10 +24,13 @@ app.set('view engine', 'html');
 app.set('views', __dirname + '/app/views');
 
 // Start server
-app.listen(3001, function () {
+var server = app.listen(3001, function () {
     console.log('App available on http://localhost:3001');
 });
 
+// Init WebSockets
+var io = socketIO.listen(server);
+
 // Init controllers
-quizzApiController(app);
-quizzViewsController(app);
+quizzApiController(app, io);
+quizzViewsController(app, io);

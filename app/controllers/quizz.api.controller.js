@@ -3,7 +3,7 @@
 var Answer = require('../objects/Answer'),
     quizz = require('../services/quizz.service');
 
-module.exports = function (app) {
+module.exports = function (app, io) {
 
     app.get('/api/quizz/next', function (req, res) {
 
@@ -22,6 +22,11 @@ module.exports = function (app) {
 
     app.get('/api/quizz/scores', function (req, res) {
         quizz.getAllScores().then(function (allScores) {
+            io.sockets.emit('new_answer', {
+                login: req.body.login,
+                isCorrect: result.isCorrect
+            });
+
             res.json(allScores);
         });
     });
