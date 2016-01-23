@@ -1,9 +1,9 @@
 .badge-success {
-   background-color: red !important;
+   background-color: #34B934 !important;
 }
 
 .badge-fail {
-    background-color: #34B934 !important;
+    background-color: red !important;
 }
 
 .question-choice {
