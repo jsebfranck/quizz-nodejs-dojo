@@ -10,7 +10,7 @@ Le but de ce tutorial Node.js est de construire l'application ci-dessous en couv
 - les promesses (atelier-step6)
 - les WebSockets (atelier-step7)
 
-[logo]: https://github.com/jsebfranck/quizz-nodejs-dojo/raw/master/docs/preview.png "Preview"
+![Preview](https://github.com/jsebfranck/quizz-nodejs-dojo/raw/master/docs/preview.png)
 
 Pour commencer, entrez la commande suivante puis suives les instructions du fichier README :
 
