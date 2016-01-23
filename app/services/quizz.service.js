@@ -1,6 +1,7 @@
 'use strict';
 
-var capitalsService = require('./capitals.service');
+var capitalsService = require('./capitals.service'),
+    arrayUtil = require('./array.util');
 
 // Vérifie que le choix de l'utilisateur est correct
 // Exemple de résultat : { isCorrect: <booleanValue> }
@@ -27,6 +28,8 @@ exports.getNewQuestion = function (cb) {
         var cities = capitals.map(function (capital) {
             return capital.city;
         });
+
+        arrayUtil.shuffleArray(cities);
 
         cb(null, {
             country: capitals[0].country,
