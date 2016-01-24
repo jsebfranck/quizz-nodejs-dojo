@@ -5,7 +5,7 @@
 ### Objectif technique : comprendre les bases de JavaScript et de Node.js
 
 Dans app/tests, on retrouve des tests unitaires complets. Votre objectif est de faire en sorte que ces tests unitaires passent
-sans modifier le code des tests
+sans modifier le code des tests.
 
 Pour exécuter les tests, il faut lancer la commande "mocha app/tests" à partir de la racine du projet. La commande "mocha" s'installe
 avec "npm install -g mocha".
