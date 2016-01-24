@@ -2,7 +2,7 @@
 
 # User Story #4 : Utilisation du référentiel des capitales
 
-### Objectif technique : interragir avec une API HTTP distante
+### Objectif technique : interagir avec une API HTTP distante
 
 1. Démarrez le serveur de référentiel des capitales à l'aide de la commande "node serverCapitals.js". Ce serveur
 est désormais accessible dans votre navigateur sur cette url : http://localhost:4000/capitals.
