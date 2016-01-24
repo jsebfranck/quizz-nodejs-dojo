@@ -4,7 +4,7 @@ Le but de ce tutorial Node.js est de construire l'application ci-dessous en couv
 
 Atelier | Pour commencer l'exercice | Pour voir la solution
 ----------------------|---------------------------|----------------------
-[les bases de Javascript](https://github.com/jsebfranck/quizz-nodejs-dojo/tree/atelier-step1)|git checkout -f atelier-step1|git checkout step1
+[les bases de Javascript et Node.js](https://github.com/jsebfranck/quizz-nodejs-dojo/tree/atelier-step1)|git checkout -f atelier-step1|git checkout step1
 [Express.js](https://github.com/jsebfranck/quizz-nodejs-dojo/tree/atelier-step2)|git checkout -f atelier-step2|git checkout step2
 [Les tests et le TDD](https://github.com/jsebfranck/quizz-nodejs-dojo/tree/atelier-step3)|git checkout -f atelier-step3|git checkout step3
 [l'interaction avec une API HTTP](https://github.com/jsebfranck/quizz-nodejs-dojo/tree/atelier-step4)|git checkout -f atelier-step4|git checkout step4
