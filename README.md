@@ -10,11 +10,11 @@ sans modifier le code des tests.
 Pour exécuter les tests, il faut lancer la commande "mocha app/tests" à partir de la racine du projet. La commande "mocha" s'installe
 avec "npm install -g mocha".
 
-1. Commençons par créer une classe au format ES6 : dans app/objects/Answer.js, rajouter un constructeur qui prend 3 paramètres :
-login, country et userChoice. Puis rajouter 3 getters pour les 3 paramètres.
-2. Compléter le code des méthodes de app/services/capitals.service.test.js
-3. Vérifier que les tests de capitals.service.test.js passent
-4. Compléter le code des méthodes de app/services/quizz.service.test.js
-5. Vérifier que les tests de quizz.service.test.js passent
+1. Commençons par créer une classe au format ES6 : dans app/objects/Answer.js, rajoutez un constructeur qui prend 3 paramètres :
+login, country et userChoice. Puis rajoutez 3 getters pour les 3 paramètres.
+2. Complétez le code des méthodes de app/services/capitals.service.test.js
+3. Vérifiez que les tests de capitals.service.test.js passent
+4. Complétez le code des méthodes de app/services/quizz.service.test.js
+5. Vérifiez que les tests de quizz.service.test.js passent
 
 Félicitations, vous avez terminé le premier atelier.
