@@ -2,13 +2,13 @@
 
 Le but de ce tutorial Node.js est de construire l'application ci-dessous en couvrant différents aspects de Node.js :
 
-- les bases de Javascript (atelier-step1)
-- Express.js (atelier-step2)
-- Les tests et le TDD (atelier-step3)
-- l'interraction avec une API HTTP (atelier-step4)
-- l'interraction avec une base de données Nosql (atelier-step5)
-- les promesses (atelier-step6)
-- les WebSockets (atelier-step7)
+- [les bases de Javascript](https://github.com/jsebfranck/quizz-nodejs-dojo/tree/atelier-step1)
+- [Express.js](https://github.com/jsebfranck/quizz-nodejs-dojo/tree/atelier-step2)
+- [Les tests et le TDD](https://github.com/jsebfranck/quizz-nodejs-dojo/tree/atelier-step3)
+- [l'interraction avec une API HTTP](https://github.com/jsebfranck/quizz-nodejs-dojo/tree/atelier-step4)
+- [l'interraction avec une base de données Nosql](https://github.com/jsebfranck/quizz-nodejs-dojo/tree/atelier-step5)
+- [les promesses](https://github.com/jsebfranck/quizz-nodejs-dojo/tree/atelier-step6)
+- [les WebSockets](https://github.com/jsebfranck/quizz-nodejs-dojo/tree/atelier-step7)
 
 ![Preview](https://github.com/jsebfranck/quizz-nodejs-dojo/raw/master/docs/preview.png)
 
