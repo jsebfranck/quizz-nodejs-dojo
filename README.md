@@ -35,8 +35,8 @@ de répondre au quizz. Utilisez la classe Answer et la méthode answerQuestion d
 
 Affichons enfin la page de révision du quizz :
 
-1. Dans app/controllers/quizz.views.controller.js, créez une route GET sur l'url /revisions pour affichez la vue "revisions"
+1. Dans app/controllers/quizz.views.controller.js, créez une route GET sur l'url /revisions pour afficher la vue "revisions"
 2. Dans la même méthode, récupérez la liste des capitales à partir de la méthode getCapitals du service du quizz et passez
 la liste des capitales dans le contexte de la réponse.
-3. Enfin, dans app/views/revisions.html, utilisez le templating swig pour affichez la liste des capitales
+3. Enfin, dans app/views/revisions.html, utilisez le templating swig pour afficher la liste des capitales
 4. Consultez l'url http://localhost:3000 dans votre navigateur. La v0 du quizz est prête !
