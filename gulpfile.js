@@ -24,5 +24,5 @@ gulp.task('lint', function () {
 });
 
 gulp.task('default', function (done) {
-    runSequence('lint', 'nodemon', done);
+    runSequence('nodemon', done);
 });
